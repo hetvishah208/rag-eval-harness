@@ -1,0 +1,23 @@
+[
+  {
+    "question": "How do you load a pre-trained model in 4-bit quantization using BitsAndBytes in Transformers?",
+    "ground_truth": "Use AutoModelForCausalLM.from_pretrained() with a BitsAndBytesConfig object that has load_in_4bit set to True. Pass this config as the quantization_config parameter to from_pretrained().",
+    "source": "",
+    "category": "how-to",
+    "verified": true
+  },
+  {
+    "question": "What is the difference between AutoModel and AutoModelForCausalLM?",
+    "ground_truth": "AutoModel loads a model with only the base transformer architecture (no task-specific head), while AutoModelForCausalLM loads a model with a language modeling head on top, suitable for text generation tasks.",
+    "source": "",
+    "category": "conceptual",
+    "verified": true
+  },
+  {
+    "question": "How do you use gradient checkpointing to reduce memory usage during training?",
+    "ground_truth": "Call model.gradient_checkpointing_enable() before training. This trades compute for memory by recomputing intermediate activations during the backward pass instead of storing them. It can also be enabled via the gradient_checkpointing flag in TrainingArguments.",
+    "source": "",
+    "category": "how-to",
+    "verified": true
+  }
+]

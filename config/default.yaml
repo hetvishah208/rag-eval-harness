@@ -1,0 +1,37 @@
+# Default RAG pipeline configuration
+corpus:
+  repo_url: "https://github.com/huggingface/transformers"
+  docs_subpath: "docs/source/en"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+
+chunking:
+  chunk_size: 512        # tokens
+  chunk_overlap: 64
+  splitter: "recursive"  # recursive | markdown_header
+
+embedding:
+  model: "BAAI/bge-small-en-v1.5"   # alt: sentence-transformers/all-MiniLM-L6-v2
+  normalize: true
+
+vector_store:
+  backend: "chromadb"
+  persist_dir: "data/processed/chroma"
+  collection: "bge_256"
+
+retrieval:
+  top_k: 4
+  reranking: false       # set true to enable cross-encoder rerank
+  reranker_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
+generation:
+  backend: "ollama"
+  model: "phi3:mini"     # iterate fast; swap to llama3.1:8b for final
+  temperature: 0.0
+  max_tokens: 512
+
+judge:
+  backend: "ollama"
+  model: "mistral:7b-instruct-q4_0"   # lighter judge, runs on 16GB CPU
+  embeddings: "nomic-embed-text"      # local Ollama embeddings for RAGAS
+  temperature: 0.0

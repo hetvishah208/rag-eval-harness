@@ -1,0 +1,20 @@
+# Core RAG
+chromadb>=0.5.0
+sentence-transformers>=3.0.0
+langchain-text-splitters>=0.2.0
+
+# Generation / judge via local Ollama
+ollama>=0.3.0
+
+# Eval
+ragas>=0.2.0
+datasets>=2.20.0
+
+# App + serving
+streamlit>=1.36.0
+huggingface-hub>=0.24.0
+
+# Utils
+pyyaml>=6.0
+tqdm>=4.66.0
+pandas>=2.2.0

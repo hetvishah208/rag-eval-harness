@@ -1,0 +1,227 @@
+[
+  {
+    "question": "How do you load a pre-trained model in 4-bit quantization using BitsAndBytes in Transformers?",
+    "ground_truth": "Use AutoModelForCausalLM.from_pretrained() with a BitsAndBytesConfig object that has load_in_4bit set to True. Pass this config as the quantization_config parameter to from_pretrained().",
+    "source": "",
+    "category": "how-to",
+    "verified": true
+  },
+  {
+    "question": "What is the difference between AutoModel and AutoModelForCausalLM?",
+    "ground_truth": "AutoModel loads a model with only the base transformer architecture (no task-specific head), while AutoModelForCausalLM loads a model with a language modeling head on top, suitable for text generation tasks.",
+    "source": "",
+    "category": "conceptual",
+    "verified": true
+  },
+  {
+    "question": "How do you use gradient checkpointing to reduce memory usage during training?",
+    "ground_truth": "Call model.gradient_checkpointing_enable() before training. This trades compute for memory by recomputing intermediate activations during the backward pass instead of storing them. It can also be enabled via the gradient_checkpointing flag in TrainingArguments.",
+    "source": "",
+    "category": "how-to",
+    "verified": true
+  },
+  {
+    "question": "What is the purpose of padding inputs in MobileBert?",
+    "ground_truth": "Inputs should be padded on the right because BERT uses absolute position embeddings.",
+    "source": "docs\\source\\en\\model_doc\\mobilebert.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What are some of the features provided by Argilla for NLP tasks?",
+    "ground_truth": "Argilla provides advanced NLP labeling, monitoring, and workspaces. It is compatible with many open source ecosystems such as Hugging Face, Stanza, FLAIR, and others.",
+    "source": "awesome-transformers.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What are the kernel's parameters used to compute attention for each sequence?",
+    "ground_truth": "The kernel uses maximum sequence length (`max_seqlen_q`, `max_seqlen_k`) and cumulative sequence lengths (`cu_seq_lens_q`, `cu_seq_lens_k`) to compute attention for each sequence.",
+    "source": "docs\\source\\en\\paged_attention.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the name of the improved version of the massively multilingual and multimodal SeamlessM4T model introduced in this work?",
+    "ground_truth": "The improved version of the massively multilingual and multimodal SeamlessM4T model introduced in this work is named SeamlessM4T v2.",
+    "source": "docs\\source\\en\\model_doc\\seamless_m4t_v2.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the current fusion registration mechanism in Fusion?",
+    "ground_truth": "The current fusion registration mechanism in Fusion is class-level, where one compatible module class maps to one fused replacement class.",
+    "source": "docs\\source\\en\\fusion_mapping.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is required by a Processor in order to process inputs?",
+    "ground_truth": "A Processor requires an image_processor and a tokenizer.",
+    "source": "docs\\source\\en\\model_doc\\fuyu.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What are the key differences between the architecture of Gemma and Gemma2?",
+    "ground_truth": "The key differences between the architecture of Gemma and Gemma2 include interleaved local attention (4096 tokens), global attention (8192 tokens), and grouped-query attention (GQA) to increase inference performance.",
+    "source": "docs\\source\\en\\model_doc\\gemma2.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the purpose of quantization in large models?",
+    "ground_truth": "Quantization reduces the memory burden of large models by representing the weights in a lower precision.",
+    "source": "docs\\source\\en\\model_doc\\colqwen2.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the name of the self-supervised vision representation model introduced in the document?",
+    "ground_truth": "BEiT",
+    "source": "docs\\source\\en\\model_doc\\beit.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "Which models support the mask generation task?",
+    "ground_truth": "The Segment Anything Model (SAM) and Segment Anything Model 2 (SAM2)",
+    "source": "docs\\source\\en\\tasks\\mask_generation.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the main focus of XLM's cross-lingual pretraining?",
+    "ground_truth": "XLM's cross-lingual pretraining focuses on unsupervised training on a single language and supervised training on more than one language with a cross-lingual language model objective.",
+    "source": "docs\\source\\en\\model_doc\\xlm.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What pretrained Transformer-based vision models can be used as the encoder for the VisionEncoderDecoderModel?",
+    "ground_truth": [
+      "ViT",
+      "BEiT",
+      "DeiT",
+      "Swin"
+    ],
+    "source": "docs\\source\\en\\model_doc\\vision-encoder-decoder.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What pre-trained weights are available for the ViTMSN model?",
+    "ground_truth": "The authors have only released pre-trained weights of the backbone (ImageNet-1k pre-training).",
+    "source": "docs\\source\\en\\model_doc\\vit_msn.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What are the two options for position embeddings in the image for the Detr model?",
+    "ground_truth": "The two options for position embeddings in the image for the Detr model are fixed sinusoidal or learned absolute position embeddings.",
+    "source": "docs\\source\\en\\model_doc\\detr.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What was the name of the Encoder-only Mask Transformer model introduced in the CVPR 2025 Highlight Paper?",
+    "ground_truth": "The Encoder-only Mask Transformer model was introduced in the CVPR 2025 Highlight Paper as EoMT.",
+    "source": "docs\\source\\en\\model_doc\\eomt.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the difference between ESMFold and AlphaFold2 in terms of speed?",
+    "ground_truth": "ESMFold is an order of magnitude faster than AlphaFold2.",
+    "source": "docs\\source\\en\\model_doc\\esm.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the purpose of a KV cache in optimizing model performance?",
+    "ground_truth": "A KV cache stores calculations to be reused without recomputing them, reducing computation time and improving response rates.",
+    "source": "docs\\source\\en\\kv_cache.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What models does Depth Anything use for image encoding and decoding?",
+    "ground_truth": [
+      "DINOv2",
+      "DPT"
+    ],
+    "source": "docs\\source\\en\\model_doc\\depth_anything.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the purpose of the LXMERT model?",
+    "ground_truth": "The purpose of the LXMERT model is to require an understanding of visual concepts, language semantics, and the alignment and relationships between these two modalities.",
+    "source": "docs\\source\\en\\model_doc\\lxmert.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the performance comparison between StarCoder2-3B and other Code LLMs of similar size on benchmarks?",
+    "ground_truth": "StarCoder2-3B outperforms other Code LLMs of similar size on most benchmarks.",
+    "source": "docs\\source\\en\\model_doc\\starcoder2.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the purpose of using the `generate` method in speech-encoder-decoder model?",
+    "ground_truth": "The purpose of using the `generate` method in speech-encoder-decoder model is to perform inference and autoregressively generate text. It supports various forms of decoding, such as greedy, beam search and multinomial sampling.",
+    "source": "docs\\source\\en\\model_doc\\speech-encoder-decoder.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is mixed precision training?",
+    "ground_truth": "Mixed precision training uses fp16 or bf16 for the compute-intensive forward and backward passes, while keeping an fp32 copy of the weights for the optimizer update.",
+    "source": "docs\\source\\en\\mixed_precision_training.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the recommended padding side for batched generation in video_llava model?",
+    "ground_truth": "The recommended padding side for batched generation in video_llava model is 'left'.",
+    "source": "docs\\source\\en\\model_doc\\video_llava.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the training method used for the time series transformer model?",
+    "ground_truth": "The time series transformer model is trained using 'teacher-forcing', similar to how a Transformer is trained for machine translation. During training, one shifts the input sequence to the next time step.",
+    "source": "docs\\source\\en\\model_doc\\time_series_transformer.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What are the key differences between Janus and Janus-Pro?",
+    "ground_truth": "Janus-Pro is an advanced version of Janus that incorporates an optimized training strategy, expanded training data, and scaling to larger model size.",
+    "source": "docs\\source\\en\\model_doc\\janus.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the method used to improve the efficiency of the model in converting charts to data tables?",
+    "ground_truth": "The model uses a novel 'Shuffled Chart Data Retrieval' training task and a refined token masking strategy to improve its efficiency in converting charts to data tables.",
+    "source": "docs\\source\\en\\model_doc\\pp_chart2table.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "Why are consistent design choices important when adding a new model in Transformers?",
+    "ground_truth": "The design choices are important for everyone interacting with the model, as they make it easier to read, understand, and modify.",
+    "source": "docs\\source\\en\\add_new_model.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the purpose of using the `guidance_scale` in classifier free guidance (CFG)?",
+    "ground_truth": "The `guidance_scale` is used in classifier free guidance (CFG) to set the weighting between the conditional logits (which are predicted from the text prompts) and the unconditional logits (which are predicted from an unconditional or pre-trained model).",
+    "source": "docs\\source\\en\\model_doc\\musicgen.md",
+    "category": "",
+    "verified": true
+  }
+]
