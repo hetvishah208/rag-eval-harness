@@ -1,6 +1,6 @@
 # ── Pinned to the combination that actually works together ──
 # Newer RAGAS (0.4.x) breaks against langchain 1.x with:
-#   ModuleNotFoundError: langchain_community.chat_models.vertexai
+# ModuleNotFoundError: langchain_community.chat_models.vertexai
 # These pins avoid that. Do not loosen without re-testing the eval end to end.
 
 # Core RAG
