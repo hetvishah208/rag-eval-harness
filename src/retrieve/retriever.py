@@ -5,14 +5,18 @@ Usage:
     python -m src.retrieve.retriever "how do I load a model in 4-bit?"
 """
 import argparse
-import yaml
 
+import yaml
 import chromadb
 from chromadb.utils import embedding_functions
 
+from src.utils import get_logger
+
+log = get_logger("retriever")
+
 
 class Retriever:
-    def __init__(self, cfg):
+    def __init__(self, cfg: dict):
         self.cfg = cfg
         ef = embedding_functions.SentenceTransformerEmbeddingFunction(
             model_name=cfg["embedding"]["model"]
@@ -26,14 +30,20 @@ class Retriever:
             from sentence_transformers import CrossEncoder
             self._reranker = CrossEncoder(cfg["retrieval"]["reranker_model"])
 
-    def retrieve(self, query, top_k=None):
+    def retrieve(self, query: str, top_k: int | None = None) -> list[dict]:
         k = top_k or self.cfg["retrieval"]["top_k"]
-        # if reranking, pull a wider candidate set first
+        # When reranking, pull a wider candidate set first, then re-rank down.
         fetch_k = k if not self._reranker else max(k, self.cfg["retrieval"].get("rerank_fetch", 8))
+
         res = self.coll.query(query_texts=[query], n_results=fetch_k)
-        docs = res["documents"][0]
-        metas = res["metadatas"][0]
-        hits = [{"text": d, "source": m["source"]} for d, m in zip(docs, metas)]
+        docs = res.get("documents", [[]])[0]
+        metas = res.get("metadatas", [[]])[0]
+        if not docs:
+            log.warning("No chunks retrieved for query: %r", query[:80])
+            return []
+
+        hits = [{"text": d, "source": m.get("source", "unknown")}
+                for d, m in zip(docs, metas)]
 
         if self._reranker:
             pairs = [[query, h["text"]] for h in hits]
@@ -49,8 +59,11 @@ if __name__ == "__main__":
     ap.add_argument("query")
     ap.add_argument("--config", default="config/default.yaml")
     args = ap.parse_args()
-    with open(args.config) as f:
+    with open(args.config, encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
     r = Retriever(cfg)
-    for i, h in enumerate(r.retrieve(args.query), 1):
+    hits = r.retrieve(args.query)
+    if not hits:
+        print("No results.")
+    for i, h in enumerate(hits, 1):
         print(f"\n[{i}] ({h['source']})\n{h['text'][:300]}...")

@@ -1,13 +1,24 @@
+# ── Pinned to the combination that actually works together ──
+# Newer RAGAS (0.4.x) breaks against langchain 1.x with:
+#   ModuleNotFoundError: langchain_community.chat_models.vertexai
+# These pins avoid that. Do not loosen without re-testing the eval end to end.
+
 # Core RAG
-chromadb>=0.5.0
+chromadb==1.5.9
 sentence-transformers>=3.0.0
-langchain-text-splitters>=0.2.0
+langchain-text-splitters==0.3.11
 
 # Generation / judge via local Ollama
 ollama>=0.3.0
 
-# Eval
-ragas>=0.2.0
+# Eval (RAGAS pinned for langchain compatibility; the harness uses a direct
+# Ollama judge, but RAGAS + these langchain pins are kept for parity/reference)
+ragas==0.2.10
+langchain==0.3.27
+langchain-community==0.3.27
+langchain-core>=0.3,<0.4
+langchain-ollama==0.2.3
+langchain-huggingface==0.1.2
 datasets>=2.20.0
 
 # App + serving
