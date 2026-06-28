@@ -25,7 +25,7 @@ jobs:
           sleep 5
       - name: Pull small models (CI uses tiny models for speed)
         run: |
-          ollama pull phi3:mini
+          ollama pull tinyllama
           ollama pull nomic-embed-text
       - name: Lint imports & unit tests
         run: |

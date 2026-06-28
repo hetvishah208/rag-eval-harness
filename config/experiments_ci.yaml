@@ -1,8 +1,8 @@
 # CI-only: minimal matrix + tiny judge so GitHub Actions free runners finish fast.
 # Real evaluation uses config/experiments.yaml locally.
 defaults:
-  generator_model: "phi3:mini"
-  judge_model: "phi3:mini"
+  generator_model: "tinyllama"
+  judge_model: "tinyllama"
   judge_embeddings: "nomic-embed-text"
   vector_store: "chromadb"
   corpus_path: "data/raw/"
