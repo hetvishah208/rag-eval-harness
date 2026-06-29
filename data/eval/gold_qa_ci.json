@@ -1,0 +1,72 @@
+[
+  {
+    "question": "How do you load a pre-trained model in 4-bit quantization using BitsAndBytes in Transformers?",
+    "ground_truth": "Use AutoModelForCausalLM.from_pretrained() with a BitsAndBytesConfig object that has load_in_4bit set to True. Pass this config as the quantization_config parameter to from_pretrained().",
+    "source": "",
+    "category": "how-to",
+    "verified": true
+  },
+  {
+    "question": "What is the difference between AutoModel and AutoModelForCausalLM?",
+    "ground_truth": "AutoModel loads a model with only the base transformer architecture (no task-specific head), while AutoModelForCausalLM loads a model with a language modeling head on top, suitable for text generation tasks.",
+    "source": "",
+    "category": "conceptual",
+    "verified": true
+  },
+  {
+    "question": "How do you use gradient checkpointing to reduce memory usage during training?",
+    "ground_truth": "Call model.gradient_checkpointing_enable() before training. This trades compute for memory by recomputing intermediate activations during the backward pass instead of storing them. It can also be enabled via the gradient_checkpointing flag in TrainingArguments.",
+    "source": "",
+    "category": "how-to",
+    "verified": true
+  },
+  {
+    "question": "What is the purpose of padding inputs in MobileBert?",
+    "ground_truth": "Inputs should be padded on the right because BERT uses absolute position embeddings.",
+    "source": "docs\\source\\en\\model_doc\\mobilebert.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What are some of the features provided by Argilla for NLP tasks?",
+    "ground_truth": "Argilla provides advanced NLP labeling, monitoring, and workspaces. It is compatible with many open source ecosystems such as Hugging Face, Stanza, FLAIR, and others.",
+    "source": "awesome-transformers.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What are the kernel's parameters used to compute attention for each sequence?",
+    "ground_truth": "The kernel uses maximum sequence length (`max_seqlen_q`, `max_seqlen_k`) and cumulative sequence lengths (`cu_seq_lens_q`, `cu_seq_lens_k`) to compute attention for each sequence.",
+    "source": "docs\\source\\en\\paged_attention.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the name of the improved version of the massively multilingual and multimodal SeamlessM4T model introduced in this work?",
+    "ground_truth": "The improved version of the massively multilingual and multimodal SeamlessM4T model introduced in this work is named SeamlessM4T v2.",
+    "source": "docs\\source\\en\\model_doc\\seamless_m4t_v2.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is the current fusion registration mechanism in Fusion?",
+    "ground_truth": "The current fusion registration mechanism in Fusion is class-level, where one compatible module class maps to one fused replacement class.",
+    "source": "docs\\source\\en\\fusion_mapping.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What is required by a Processor in order to process inputs?",
+    "ground_truth": "A Processor requires an image_processor and a tokenizer.",
+    "source": "docs\\source\\en\\model_doc\\fuyu.md",
+    "category": "",
+    "verified": true
+  },
+  {
+    "question": "What are the key differences between the architecture of Gemma and Gemma2?",
+    "ground_truth": "The key differences between the architecture of Gemma and Gemma2 include interleaved local attention (4096 tokens), global attention (8192 tokens), and grouped-query attention (GQA) to increase inference performance.",
+    "source": "docs\\source\\en\\model_doc\\gemma2.md",
+    "category": "",
+    "verified": true
+  }
+]

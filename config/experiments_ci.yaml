@@ -8,7 +8,7 @@ defaults:
   corpus_path: "data/raw/"
   processed_path: "data/processed/"
   results_path: "results/"
-  eval_dataset: "data/eval/gold_qa.json"
+  eval_dataset: "data/eval/gold_qa_ci.json"
 configs:
   A:
     name: "CI smoke: BGE / 256 / top-3"
